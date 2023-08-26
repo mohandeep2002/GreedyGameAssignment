@@ -1,88 +1,104 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using GreedyGame.Class;
 
-public class UITemplate : EditorWindow
+namespace GreedyGame.EditorScripts
 {
-    private TextAsset templateJson;
-    private Vector2 scrollPosition;
+    public class UITemplate : EditorWindow
+    {
+        private TextAsset templateJson;
+        private Vector2 scrollPosition;
 
-    [MenuItem("GreedyGame/UITemplateTool")]
-    private static void ShowWindow()
-    {
-        EditorWindow.GetWindow<UITemplate>("UITemplateTool");
-    }
-    
-    private void OnGUI()
-    {
-        GUILayout.Label("UI Template Tool", EditorStyles.largeLabel);
-        templateJson = EditorGUILayout.ObjectField("JSON File", templateJson, typeof(TextAsset), false) as TextAsset;
-        if (GUILayout.Button("Generate UI Template"))
+        [MenuItem("GreedyGame/UI Creator From Template")]
+        private static void ShowWindow()
         {
-            if (templateJson != null)
-            {
-                string json = templateJson.text;
-                InstantiateUITemplate(json);
-            }
-            else Debug.LogWarning("File Not found");
+            EditorWindow.GetWindow<UITemplate>("UI Creator From Template");
         }
-    }
-
-    private void InstantiateUITemplate(string json)
-    {
-        UITemplateData templateData = JsonUtility.FromJson<UITemplateData>(json);
-        GameObject root = InstantiateUIElement(templateData);
-        root.transform.SetParent(Selection.activeTransform);
-    }
-    
-    private GameObject InstantiateUIElement(UITemplateData template)
-    {
-        GameObject uiElement = new GameObject(template.name);
-        uiElement.transform.localPosition = new Vector3(template.position.x, template.position.y, 0);
-        uiElement.transform.localRotation = Quaternion.Euler(0, 0, template.rotation);
-        uiElement.transform.localScale = new Vector3(template.scale.x, template.scale.y, 1);
-        foreach (var component in template.components)
+        
+        private void OnGUI()
         {
-            if (component.type == "Button")
+            GUILayout.Label("UI Creator From Template", EditorStyles.largeLabel);
+            templateJson = EditorGUILayout.ObjectField("JSON File", templateJson, typeof(TextAsset), false) as TextAsset;
+            if (GUILayout.Button("Generate UI Template"))
             {
-                Button button = uiElement.AddComponent<Button>();
-                
-                //button.GetComponentInChildren<Text>().text = component.text;
+                if (templateJson != null)
+                {
+                    string json = templateJson.text;
+                    InstantiateUITemplate(json);
+                }
+                else Debug.LogWarning("File Not found");
             }
         }
 
-        foreach (var child in template.children)
+        private void InstantiateUITemplate(string json)
         {
-            GameObject c = InstantiateUIElement(child);
-            c.transform.SetParent(uiElement.transform);
+            json = json.Remove(0, 1);
+            json = json.Remove(json.Length - 1, 1);
+            Debug.Log(json);
+            if (json.Length == 0)
+            {
+                Debug.LogWarning("Empty JSON file");
+                return;
+            }
+            JSONClass templateData = JsonUtility.FromJson<JSONClass>(json);
+            // JSONClass templateData = 
+            GameObject root = InstantiateUIElement(templateData);
+            root.transform.SetParent(GameObject.Find("Generated UI").transform);
         }
+        
+        private GameObject InstantiateUIElement(JSONClass template)
+        {
+            GameObject uiElement = new GameObject(template.name);
+            uiElement.transform.localPosition = new Vector3(template.properties.position.x, template.properties.position.y, template.properties.position.z);
+            uiElement.transform.localRotation = Quaternion.Euler(template.properties.rotation.x, template.properties.rotation.y, template.properties.rotation.z);
+            uiElement.transform.localScale = new Vector3(template.properties.scale.x, template.properties.scale.y, template.properties.scale.z);
+            int attributeValue = (int)template.properties.uiAttribute;
+            if (attributeValue == 0) // Button
+            {
+                uiElement.AddComponent<Button>();
+            }
+            else if (attributeValue == 1)
+            {
+                uiElement.AddComponent<TMPro.TextMeshProUGUI>();
+            }
+            else if (attributeValue == 2)
+            {
+                uiElement.AddComponent<Image>();
+            }
 
-        return uiElement;
+            foreach (var child in template.newChildren)
+            {
+                GameObject c = InstantiateUIElement(child);
+                c.transform.SetParent(uiElement.transform);
+            }
+
+            return uiElement;
+        }
     }
-}
 
-[System.Serializable]
-public class UITemplateData
-{
-    public string name;
-    public Vector2 position;
-    public float rotation;
-    public Vector2 scale;
-    public ColorData color;
-    public UIComponentData[] components;
-    public UITemplateData[] children;
-}
+    /*[System.Serializable]
+    public class UITemplateData
+    {
+        public string name;
+        public Vector2 position;
+        public float rotation;
+        public Vector2 scale;
+        public ColorData color;
+        public UIComponentData[] components;
+        public UITemplateData[] children;
+    }
 
-[System.Serializable]
-public class ColorData
-{
-    public float r, g, b, a;
-}
+    [System.Serializable]
+    public class ColorData
+    {
+        public float r, g, b, a;
+    }
 
-[System.Serializable]
-public class UIComponentData
-{
-    public string type;
-    public string text;
+    [System.Serializable]
+    public class UIComponentData
+    {
+        public string type;
+        public string text;
+    }*/
 }

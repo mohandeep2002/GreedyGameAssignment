@@ -2,35 +2,39 @@ using System;
 using UnityEngine;
 using UnityEditor;
 
-public class ExampleWindow : EditorWindow
+namespace GreedyGame.EditorScripts
 {
-    private Color _color;
-    [MenuItem("Window/Colorizer")]
-    public static void ShowWindow()
+    public class ExampleWindow : EditorWindow
     {
-        EditorWindow.GetWindow<ExampleWindow>("Colorizer");
-    }
-    
-    private void OnGUI()
-    {
-        // Window Code
-        GUILayout.Label("Color the selected Objects", EditorStyles.boldLabel);
-        _color = EditorGUILayout.ColorField("Color", _color);
-        if (GUILayout.Button("COLORIZE!"))
+        private Color _color;
+        [MenuItem("Window/Colorizer")]
+        public static void ShowWindow()
         {
-            Colorize();
+            EditorWindow.GetWindow<ExampleWindow>("Colorizer");
         }
-    }
-
-    private void Colorize()
-    {
-        foreach (var foreSelection in Selection.gameObjects)
+    
+        private void OnGUI()
         {
-            Renderer renderer = foreSelection.GetComponent<Renderer>();
-            if (renderer != null)
+            // Window Code
+            GUILayout.Label("Color the selected Objects", EditorStyles.boldLabel);
+            _color = EditorGUILayout.ColorField("Color", _color);
+            if (GUILayout.Button("COLORIZE!"))
             {
-                renderer.sharedMaterial.color = _color;
+                Colorize();
+            }
+        }
+
+        private void Colorize()
+        {
+            foreach (var foreSelection in Selection.gameObjects)
+            {
+                Renderer renderer = foreSelection.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.sharedMaterial.color = _color;
+                }
             }
         }
     }
+
 }

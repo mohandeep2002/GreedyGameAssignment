@@ -1,7 +1,7 @@
 [
   {
+    "name": "",
     "properties": {
-      "name": "one",
       "position": {
         "x": 0.0,
         "y": 0.0,
@@ -17,9 +17,14 @@
         "y": 0.0,
         "z": 0.0
       },
-      "colour": "#321321",
+      "color": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+      },
       "uiAttribute": 0
     },
-    "addChildren": []
+    "newChildren": []
   }
 ]

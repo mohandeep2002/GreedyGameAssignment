@@ -35,24 +35,12 @@ namespace GreedyGame.EditorScripts
 
         private void InstantiateUITemplate(string json)
         {
-            
-            Debug.Log(json);
             if (json.Length == 0)
             {
                 Debug.LogWarning("Empty JSON file");
                 return;
             }
-            /*json = json.Remove(0, 1);
-            json = json.Remove(json.Length - 1, 1);*/
-            //JSONClass[] object = JsonHelper.FromJSON<JSONClass>(json);
             JSONClass templateData = JsonUtility.FromJson<JSONClass>(json);
-            // JSONClass[] templateData = JsonUtility.FromJson<JSONClass[]>(json);
-            // JSONClass templateData = JsonConvert.DeserializeObject<JSONClass>(json);
-            /*foreach (var jsonClass in templateData)
-            {
-                // JSONClass templateData =
-                Debug.Log(jsonClass);
-            } */
             GameObject root = InstantiateUIElement(templateData);
             root.transform.SetParent(GameObject.Find("Generated UI").transform);
         }
@@ -68,11 +56,11 @@ namespace GreedyGame.EditorScripts
             {
                 uiElement.AddComponent<Button>();
             }
-            else if (attributeValue == 1)
+            else if (attributeValue == 1) // Text
             {
                 uiElement.AddComponent<TMPro.TextMeshProUGUI>();
             }
-            else if (attributeValue == 2)
+            else if (attributeValue == 2) // Image
             {
                 uiElement.AddComponent<Image>();
             }

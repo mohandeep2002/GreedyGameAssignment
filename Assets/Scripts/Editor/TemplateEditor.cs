@@ -11,12 +11,17 @@ namespace GreedyGame.EditorScripts
         {
             DrawDefaultInspector();
 
-            TemplateCreationController myScript = (TemplateCreationController)target;
+            TemplateCreationController templateCreationController = (TemplateCreationController)target;
 
             if (GUILayout.Button("Generate Template"))
             {
-                myScript.MyFunction();
+                templateCreationController.TemplateCreation();
                 AssetDatabase.Refresh();
+            }
+
+            if (GUILayout.Button("Reset Template"))
+            {
+                templateCreationController.ResetObject();
             }
         }
     }

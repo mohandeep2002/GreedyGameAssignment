@@ -12,7 +12,7 @@ namespace GreedyGame.Controller
         public string templateName;
         // public List<JSONClass> parentList = new List<JSONClass>();
         public JSONClass parentList;
-        public void MyFunction()
+        public void TemplateCreation()
         {
             string json = JsonConvert.SerializeObject(parentList, Formatting.Indented);
             print("Calling from editor :" + json);
@@ -20,46 +20,13 @@ namespace GreedyGame.Controller
             string path = "Assets/Resources/GeneratedJSON/" + templateName + ".json";
             File.WriteAllText(path, json);
             Debug.Log("Parent list exported to JSON at " + path);
-            
+        }
+
+        public void ResetObject()
+        {
+            parentList = null;
+            templateName = "";
         }
     }
-    
-    /*
-    [Serializable]
-    public class Parent
-    {
-        public Properties properties;
-        public Children[] addChildren;
-    }
-    
-    [Serializable]
-    public class Children
-    {
-        public Parent childParent;
-    }
-    [Serializable]
-    public class Properties
-    {
-        public string name;
-        public Vectors position;
-        public Vectors rotation;
-        public Vectors scale;
-        public string colour;
-        public UIattribute uiAttribute;
-    }
-    [Serializable]
-    public class Vectors
-    {
-        public float x;
-        public float y;
-        public float z;
-    }
-    [Serializable]
-    public enum UIattribute
-    {
-        Button,
-        Text,
-        Image
-    }*/
 }
 

@@ -262,7 +262,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &802840616
+--- !u!1 &781320478
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,60 +270,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 802840617}
+  - component: {fileID: 781320479}
   m_Layer: 0
-  m_Name: A
+  m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &802840617
+--- !u!4 &781320479
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802840616}
+  m_GameObject: {fileID: 781320478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 880471585}
+  - {fileID: 1880503677}
   m_Father: {fileID: 1609183278}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &880471584
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 880471585}
-  m_Layer: 0
-  m_Name: B
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &880471585
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880471584}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 802840617}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -409,6 +378,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365961932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365961933}
+  m_Layer: 0
+  m_Name: Child 2.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365961933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365961932}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1880503677}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1383743688
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +443,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1482889559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482889560}
+  m_Layer: 0
+  m_Name: B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1482889560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482889559}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1583972892}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1583972891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583972892}
+  m_Layer: 0
+  m_Name: A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583972892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583972891}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1482889560}
+  m_Father: {fileID: 1609183278}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609183277
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +534,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 802840617}
+  - {fileID: 1583972892}
+  - {fileID: 781320479}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -542,6 +606,38 @@ MonoBehaviour:
         a: 0
       uiAttribute: 0
     newChildren: []
+--- !u!1 &1880503676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880503677}
+  m_Layer: 0
+  m_Name: Child 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1880503677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880503676}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1, y: -1, z: -1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1365961933}
+  m_Father: {fileID: 781320479}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046337617
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentList:
-    name: 
+    name: SampleFormat
     properties:
       position:
         x: 0
@@ -607,4 +703,361 @@ MonoBehaviour:
         b: 0
         a: 0
       uiAttribute: 0
-    newChildren: []
+    newChildren:
+    - name: Holder
+      properties:
+        position:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+        scale:
+          x: 0
+          y: 0
+          z: 0
+        color:
+          r: 0
+          g: 0
+          b: 0
+          a: 0
+        uiAttribute: 0
+      newChildren:
+      - name: adTag
+        properties:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 0
+            y: 0
+            z: 0
+          color:
+            r: 0
+            g: 0
+            b: 0
+            a: 0
+          uiAttribute: 0
+        newChildren: []
+      - name: RawImage_adchoicesIcon
+        properties:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 0
+            y: 0
+            z: 0
+          color:
+            r: 0
+            g: 0
+            b: 0
+            a: 0
+          uiAttribute: 3
+        newChildren: []
+      - name: Padding
+        properties:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 0
+            y: 0
+            z: 0
+          color:
+            r: 0
+            g: 0
+            b: 0
+            a: 0
+          uiAttribute: 0
+        newChildren:
+        - name: Appdetails
+          properties:
+            position:
+              x: 0
+              y: 0
+              z: 0
+            rotation:
+              x: 0
+              y: 0
+              z: 0
+            scale:
+              x: 0
+              y: 0
+              z: 0
+            color:
+              r: 0
+              g: 0
+              b: 0
+              a: 0
+            uiAttribute: 2
+          newChildren:
+          - name: AppIconHolder
+            properties:
+              position:
+                x: 0
+                y: 0
+                z: 0
+              rotation:
+                x: 0
+                y: 0
+                z: 0
+              scale:
+                x: 0
+                y: 0
+                z: 0
+              color:
+                r: 0
+                g: 0
+                b: 0
+                a: 0
+              uiAttribute: 0
+            newChildren:
+            - name: RawImage_adIcon
+              properties:
+                position:
+                  x: 0
+                  y: 0
+                  z: 0
+                rotation:
+                  x: 0
+                  y: 0
+                  z: 0
+                scale:
+                  x: 0
+                  y: 0
+                  z: 0
+                color:
+                  r: 0
+                  g: 0
+                  b: 0
+                  a: 0
+                uiAttribute: 3
+              newChildren: []
+          - name: AppInfo
+            properties:
+              position:
+                x: 0
+                y: 0
+                z: 0
+              rotation:
+                x: 0
+                y: 0
+                z: 0
+              scale:
+                x: 0
+                y: 0
+                z: 0
+              color:
+                r: 0
+                g: 0
+                b: 0
+                a: 0
+              uiAttribute: 0
+            newChildren:
+            - name: Text-adHeadline
+              properties:
+                position:
+                  x: 0
+                  y: 0
+                  z: 0
+                rotation:
+                  x: 0
+                  y: 0
+                  z: 0
+                scale:
+                  x: 0
+                  y: 0
+                  z: 0
+                color:
+                  r: 0
+                  g: 0
+                  b: 0
+                  a: 0
+                uiAttribute: 2
+              newChildren: []
+            - name: StarRating
+              properties:
+                position:
+                  x: 0
+                  y: 0
+                  z: 0
+                rotation:
+                  x: 0
+                  y: 0
+                  z: 0
+                scale:
+                  x: 0
+                  y: 0
+                  z: 0
+                color:
+                  r: 0
+                  g: 0
+                  b: 0
+                  a: 0
+                uiAttribute: 2
+              newChildren:
+              - name: fill
+                properties:
+                  position:
+                    x: 0
+                    y: 0
+                    z: 0
+                  rotation:
+                    x: 0
+                    y: 0
+                    z: 0
+                  scale:
+                    x: 0
+                    y: 0
+                    z: 0
+                  color:
+                    r: 0
+                    g: 0
+                    b: 0
+                    a: 0
+                  uiAttribute: 0
+                newChildren: []
+              - name: outline
+                properties:
+                  position:
+                    x: 0
+                    y: 0
+                    z: 0
+                  rotation:
+                    x: 0
+                    y: 0
+                    z: 0
+                  scale:
+                    x: 0
+                    y: 0
+                    z: 0
+                  color:
+                    r: 0
+                    g: 0
+                    b: 0
+                    a: 0
+                  uiAttribute: 0
+                newChildren: []
+            - name: Text_store
+              properties:
+                position:
+                  x: 0
+                  y: 0
+                  z: 0
+                rotation:
+                  x: 0
+                  y: 0
+                  z: 0
+                scale:
+                  x: 0
+                  y: 0
+                  z: 0
+                color:
+                  r: 0
+                  g: 0
+                  b: 0
+                  a: 0
+                uiAttribute: 2
+              newChildren: []
+            - name: priceTxt
+              properties:
+                position:
+                  x: 0
+                  y: 0
+                  z: 0
+                rotation:
+                  x: 0
+                  y: 0
+                  z: 0
+                scale:
+                  x: 0
+                  y: 0
+                  z: 0
+                color:
+                  r: 0
+                  g: 0
+                  b: 0
+                  a: 0
+                uiAttribute: 2
+              newChildren: []
+          - name: Text_body
+            properties:
+              position:
+                x: 0
+                y: 0
+                z: 0
+              rotation:
+                x: 0
+                y: 0
+                z: 0
+              scale:
+                x: 0
+                y: 0
+                z: 0
+              color:
+                r: 0
+                g: 0
+                b: 0
+                a: 0
+              uiAttribute: 2
+            newChildren: []
+        - name: Button_Cta
+          properties:
+            position:
+              x: 0
+              y: 0
+              z: 0
+            rotation:
+              x: 0
+              y: 0
+              z: 0
+            scale:
+              x: 0
+              y: 0
+              z: 0
+            color:
+              r: 0
+              g: 0
+              b: 0
+              a: 0
+            uiAttribute: 1
+          newChildren:
+          - name: Text_CallToAction
+            properties:
+              position:
+                x: 0
+                y: 0
+                z: 0
+              rotation:
+                x: 0
+                y: 0
+                z: 0
+              scale:
+                x: 0
+                y: 0
+                z: 0
+              color:
+                r: 0
+                g: 0
+                b: 0
+                a: 0
+              uiAttribute: 2
+            newChildren: []

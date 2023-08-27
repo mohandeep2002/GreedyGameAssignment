@@ -10,7 +10,8 @@ namespace GreedyGame.Controller
     public class TemplateCreationController : MonoBehaviour
     {
         public string templateName;
-        public List<JSONClass> parentList = new List<JSONClass>();
+        // public List<JSONClass> parentList = new List<JSONClass>();
+        public JSONClass parentList;
         public void MyFunction()
         {
             string json = JsonConvert.SerializeObject(parentList, Formatting.Indented);

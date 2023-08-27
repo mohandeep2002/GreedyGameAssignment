@@ -2,6 +2,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using GreedyGame.Class;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace GreedyGame.EditorScripts
 {
@@ -20,7 +22,7 @@ namespace GreedyGame.EditorScripts
         {
             GUILayout.Label("UI Creator From Template", EditorStyles.largeLabel);
             templateJson = EditorGUILayout.ObjectField("JSON File", templateJson, typeof(TextAsset), false) as TextAsset;
-            if (GUILayout.Button("Generate UI Template"))
+            if (GUILayout.Button("Generate UI in Hierarchy"))
             {
                 if (templateJson != null)
                 {
@@ -33,16 +35,24 @@ namespace GreedyGame.EditorScripts
 
         private void InstantiateUITemplate(string json)
         {
-            json = json.Remove(0, 1);
-            json = json.Remove(json.Length - 1, 1);
+            
             Debug.Log(json);
             if (json.Length == 0)
             {
                 Debug.LogWarning("Empty JSON file");
                 return;
             }
+            /*json = json.Remove(0, 1);
+            json = json.Remove(json.Length - 1, 1);*/
+            //JSONClass[] object = JsonHelper.FromJSON<JSONClass>(json);
             JSONClass templateData = JsonUtility.FromJson<JSONClass>(json);
-            // JSONClass templateData = 
+            // JSONClass[] templateData = JsonUtility.FromJson<JSONClass[]>(json);
+            // JSONClass templateData = JsonConvert.DeserializeObject<JSONClass>(json);
+            /*foreach (var jsonClass in templateData)
+            {
+                // JSONClass templateData =
+                Debug.Log(jsonClass);
+            } */
             GameObject root = InstantiateUIElement(templateData);
             root.transform.SetParent(GameObject.Find("Generated UI").transform);
         }

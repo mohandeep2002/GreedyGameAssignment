@@ -18,7 +18,7 @@ namespace GreedyGame.Controller
             }
             JSONClass hierarchyJSON = CreateJSONHierarchy(selectGameObject.transform);
             string jsonString = JsonUtility.ToJson(hierarchyJSON, true);
-            string outputPath = "Assets/Resources/ExtractedJSON/" + selectGameObject.transform.name + ".json";
+            string outputPath = "Assets/Resources/ExportedJSON/" + selectGameObject.transform.name + ".json";
             File.WriteAllText(outputPath, jsonString);
             Debug.Log("JSON File Exproted to " + outputPath);
         }

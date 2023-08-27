@@ -18,6 +18,15 @@ namespace GreedyGame.EditorScripts
             {
                 templateEditorController.ExportGameObjectToJSON();
             }
+
+            if (GUILayout.Button("Update Template"))
+            {
+                templateEditorController.SaveUpdatedData();
+            }
+            if (GUILayout.Button("Reset"))
+            {
+                templateEditorController.ResetData();
+            }
         }
     }
 

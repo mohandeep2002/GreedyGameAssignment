@@ -1,20 +1,20 @@
 {
-  "name": "One ",
+  "name": "1st GO",
   "properties": {
     "position": {
-      "x": 0.0,
-      "y": 0.0,
-      "z": 0.0
+      "x": 1.0,
+      "y": 2.0,
+      "z": 3.0
     },
     "rotation": {
-      "x": 0.0,
-      "y": 0.0,
-      "z": 0.0
+      "x": 4.0,
+      "y": 5.0,
+      "z": 6.0
     },
     "scale": {
-      "x": 0.0,
-      "y": 0.0,
-      "z": 0.0
+      "x": 7.0,
+      "y": 8.0,
+      "z": 9.0
     },
     "color": {
       "r": 0.0,
@@ -26,12 +26,12 @@
   },
   "newChildren": [
     {
-      "name": "Two",
+      "name": "1st Child GO",
       "properties": {
         "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
+          "x": 11.0,
+          "y": 12.0,
+          "z": 13.0
         },
         "rotation": {
           "x": 0.0,
@@ -49,7 +49,7 @@
           "b": 0.0,
           "a": 0.0
         },
-        "uiAttribute": 2
+        "uiAttribute": 0
       },
       "newChildren": []
     }

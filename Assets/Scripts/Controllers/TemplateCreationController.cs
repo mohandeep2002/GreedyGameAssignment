@@ -9,17 +9,20 @@ namespace GreedyGame.Controller
 {
     public class TemplateCreationController : MonoBehaviour
     {
+        [Header("JSON Template Creator")]
         public string templateName;
         // public List<JSONClass> parentList = new List<JSONClass>();
         public JSONClass parentList;
         public void TemplateCreation()
         {
             string json = JsonConvert.SerializeObject(parentList, Formatting.Indented);
-            print("Calling from editor :" + json);
+            // print("Calling from editor :" + json);
             if (templateName.Equals("")) templateName = "defaultJSON";
             string path = "Assets/Resources/GeneratedJSON/" + templateName + ".json";
             File.WriteAllText(path, json);
             Debug.Log("Parent list exported to JSON at " + path);
+            Debug.Log("Template created at " + path);
+            ResetObject();
         }
 
         public void ResetObject()

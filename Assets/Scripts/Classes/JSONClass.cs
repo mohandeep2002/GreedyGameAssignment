@@ -43,6 +43,7 @@ namespace GreedyGame.Class
     [Serializable]
     public enum UIAttribute
     {
+        GameObject,
         Button,
         Text,
         Image

@@ -19,7 +19,7 @@ namespace GreedyGame.EditorScripts
                 AssetDatabase.Refresh();
             }
 
-            if (GUILayout.Button("Reset Template"))
+            if (GUILayout.Button("Reset"))
             {
                 templateCreationController.ResetObject();
             }

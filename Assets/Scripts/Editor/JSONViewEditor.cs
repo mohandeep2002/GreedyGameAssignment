@@ -47,6 +47,12 @@ namespace GreedyGame.EditorScripts
                     Debug.LogWarning("Check the File");
                 }
             }
+
+            if (GUILayout.Button("Reset"))
+            {
+                templateJson = null;
+                loadedJson = "";
+            }
         }
     
         private void SaveJSONChanges(TextAsset jsonAsset, string updatedJson)

@@ -1,38 +1,31 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
-using Newtonsoft.Json;
 using GreedyGame.Class;
+using Newtonsoft.Json;
+using UnityEngine;
 
-namespace GreedyGame.Controller
+namespace Controllers
 {
     public class TemplateCreationController : MonoBehaviour
     {
         [Header("JSON Template Creator")]
-        // public List<JSONClass> parentList = new List<JSONClass>();
-        public JSONClass parentList;
+        public JSONClass templateParent;
+
+        #region EditorFunctions
         public void TemplateCreation()
         {
-            string json = JsonConvert.SerializeObject(parentList, Formatting.Indented);
-            // print("Calling from editor :" + json);
-            string templateName;
-            if (parentList.name.Equals(""))
-            {
-                templateName = "NoNamedJSON";
-            }
-            else templateName = parentList.name;
-            string path = "Assets/Resources/" + parentList.name + ".json";
+            string json = JsonConvert.SerializeObject(templateParent, Formatting.Indented);
+            var templateName = templateParent.name.Equals("") ? "NoNamedJSON" : templateParent.name;
+            string path = "Assets/Resources/" + templateName + ".json";
             File.WriteAllText(path, json);
-            Debug.Log("Parent list exported to JSON at " + path);
             Debug.Log("Template created at " + path);
             ResetObject();
         }
 
         public void ResetObject()
         {
-            parentList = null;
+            templateParent = null;
         }
+        #endregion
     }
 }
 

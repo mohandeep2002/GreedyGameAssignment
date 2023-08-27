@@ -14,72 +14,103 @@ namespace GreedyGame.Controller
         public GameObject selectGameObject;
         public JSONClass templateLoaded;
         private string jsonString;
+        private bool isLoadClicked;
 
-        public void ExportGameObjectToJSON()
+        #region Editor Functions
+        public void ExportGameObjectToJson()
         {
             if (selectGameObject == null)
             {
-                Debug.LogWarning("No gameobject selected");
+                Debug.LogWarning("No game-object selected");
                 return;
             }
-            JSONClass hierarchyJSON = CreateJSONHierarchy(selectGameObject.transform);
+            isLoadClicked = true;
+            JSONClass hierarchyJSON = CreateJsonHierarchy(selectGameObject.transform);
             jsonString = JsonUtility.ToJson(hierarchyJSON, true);
             LoadTemplateToInspector(jsonString);
         }
-
-        public void LoadTemplateToInspector(string jsonString)
+        
+        public void SaveUpdatedData() // Saving the data to json
         {
-            Debug.Log(jsonString);
-            JSONClass templateData = JsonUtility.FromJson<JSONClass>(jsonString);
-            templateLoaded = templateData;
-            Debug.Log("Templated Loaded");
-        }
-
-        public void SaveUpdatedData()
-        {
-            string updatedJSON = JsonConvert.SerializeObject(templateLoaded, Formatting.Indented);
-            if (updatedJSON == jsonString)
+            if (!isLoadClicked)
             {
-                Debug.LogWarning("No edits found");
+                isLoadClicked = false;
+                Debug.LogWarning("Load Template not clicked");
                 return;
             }
-            templateLoaded = JsonUtility.FromJson<JSONClass>(updatedJSON);
+            if (selectGameObject == null)
+            {
+                Debug.LogWarning("No game-object selected");
+                return;
+            }
+            string updatedJson = JsonConvert.SerializeObject(templateLoaded, Formatting.Indented);
+            if (updatedJson.Equals(jsonString)) Debug.LogError("noooo   ");
+            templateLoaded = JsonUtility.FromJson<JSONClass>(updatedJson);
             Debug.Log("Template Updated");
-            Debug.Log(updatedJSON);
             string path = "Assets/Resources/" + templateLoaded.name + ".json";
-            File.WriteAllText(path, updatedJSON);
+            File.WriteAllText(path, updatedJson);
             Debug.Log("JSON File Updated");
             UpdateGameObject();
         }
-
+        
         public void ResetData()
         {
             jsonString = "";
             templateLoaded = null;
             selectGameObject = null;
+            isLoadClicked = false;
+        }
+        #endregion
+
+        private bool CheckingJson(string jsonString1, string jsonString2)
+        {
+            Dictionary<string, object> dict1 = JsonUtility.FromJson<Dictionary<string, object>>(jsonString1);
+            Dictionary<string, object> dict2 = JsonUtility.FromJson<Dictionary<string, object>>(jsonString2);
+
+            // Convert dictionaries to JSON strings for comparison (optional)
+            string reconstructedJson1 = JsonUtility.ToJson(dict1);
+            string reconstructedJson2 = JsonUtility.ToJson(dict2);
+
+            // Compare JSON strings or compare dictionaries directly
+            return reconstructedJson1 == reconstructedJson2;
         }
         
-        private JSONClass CreateJSONHierarchy(Transform transform)
+
+        private void LoadTemplateToInspector(string jsonString) // Loading of data from json to inspector
         {
-            JSONClass jsonObject = new JSONClass();
-            jsonObject.name = transform.name;
-            jsonObject.properties = new Properties()
+            JSONClass templateData = JsonUtility.FromJson<JSONClass>(jsonString);
+            templateLoaded = templateData;
+            Debug.Log("Templated Loaded");
+        }
+
+        
+        
+        private JSONClass CreateJsonHierarchy(Transform transform)
+        {
+            var position = transform.position;
+            var eulerAngles = transform.eulerAngles;
+            var localScale = transform.localScale;
+            JSONClass jsonObject = new JSONClass
             {
-                position = new CustomVectors
-                    { x = transform.position.x, y = transform.position.y, z = transform.position.z },
-                rotation = new CustomVectors
-                    { x = transform.eulerAngles.x, y = transform.eulerAngles.y, z = transform.eulerAngles.z },
-                scale = new CustomVectors
-                    { x = transform.localScale.x, y = transform.localScale.y, z = transform.localScale.z },
-                color = new ColorData { r = 0, g = 0, b = 0, a = 1 },
-                uiAttribute = UIAttribute.GameObject
+                name = transform.name,
+                properties = new Properties()
+                {
+                    position = new CustomVectors
+                        { x = position.x, y = position.y, z = position.z },
+                    rotation = new CustomVectors
+                        { x = eulerAngles.x, y = eulerAngles.y, z = eulerAngles.z },
+                    scale = new CustomVectors
+                        { x = localScale.x, y = localScale.y, z = localScale.z },
+                    color = new ColorData { r = 0, g = 0, b = 0, a = 1 },
+                    uiAttribute = UIAttribute.GameObject
+                }
             };
             int childCount = transform.childCount;
             jsonObject.newChildren = new JSONClass[childCount];
             for (int i = 0; i < childCount; i++)
             {
-                Transform childTransform = transform.GetChild(i);
-                jsonObject.newChildren[i] = CreateJSONHierarchy(childTransform);
+                var childTransform = transform.GetChild(i);
+                jsonObject.newChildren[i] = CreateJsonHierarchy(childTransform);
             }
             return jsonObject;
         }

@@ -16,7 +16,7 @@ namespace GreedyGame.EditorScripts
             TemplateEditorController templateEditorController = (TemplateEditorController)target;
             if (GUILayout.Button("Load Template"))
             {
-                templateEditorController.ExportGameObjectToJSON();
+                templateEditorController.ExportGameObjectToJson();
             }
 
             if (GUILayout.Button("Update Template"))

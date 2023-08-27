@@ -1,3 +1,4 @@
+using Controllers;
 using UnityEngine;
 using UnityEditor;
 using GreedyGame.Controller;
@@ -13,7 +14,7 @@ namespace GreedyGame.EditorScripts
             JSONExporterController jsonExporterController = (JSONExporterController)target;
             if (GUILayout.Button("Generate JSON File"))
             {
-                jsonExporterController.ExportGameObjectToJSON();
+                jsonExporterController.ExportGameObjectToJson();
                 AssetDatabase.Refresh();
             }
 
